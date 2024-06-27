@@ -4,27 +4,34 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 // Collect employee data
 const collectEmployees = function () {
   const employees = []
+  let addEmployees = (true)
 
-  while (true) { 
-    let firstName = prompt ("Enter first name:");
+  while (addEmployees) {
+    let firstName = prompt("Enter first name:");
     if (!firstName) break;
 
-    let lastName = prompt ("Enter last name:");
-    if (!lastName) break; 
+    let lastName = prompt("Enter last name:");
+    if (!lastName) break;
 
-    let salary = prompt ("Enter salary:");
+    let salary = prompt("Enter salary:");
     if (!salary) break;
 
-    if (isNaN(salary) || salary <= 0) {
-     confirm ('Not a valid salary, please enter correct salary!');
-     continue;
-      } 
-
-      employees.push({firstName: firstName, lastName: lastName, salary: salary})
+    salary = parseFloat(salary);
+    if (isNaN(salary)) {
+      salary = 0
     }
-    return employees
+
+    if (isNaN(salary) || salary <= 0) {
+      alert('Not a valid salary, please enter correct salary!');
+      continue;
+    }
+    addEmployees = confirm("Add another employee?")
+
+    employees.push({ firstName: firstName, lastName: lastName, salary: salary })
   }
-  // TODO: Get user input to create and return an array of employee objects
+  return employees
+}
+// TODO: Get user input to create and return an array of employee objects
 
 // collectEmployees()
 
@@ -32,24 +39,26 @@ const collectEmployees = function () {
 // let employees = []
 
 const displayAverageSalary = function (employeesArray) {
+  const numberOfEmployees = employeesArray.length
+  const totalSalary = employeesArray.reduce(
+    (total, employee) => total + employee.salary,
+    0
+  );
 
-  if (!Array.isArray(employeesArray) || employeesArray.length === 0) {
+  if (!employeesArray) {
     console.log("No salaries provided.");
     return;
-}
+  }
 
-let total = 0;
-for (let i = 0; i < employeesArray.length; i++) {
-    total += employeesArray[i];
-}
+  const averageSalary = totalSalary / numberOfEmployees;
+  // Log the average salary without decimals
+  console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $ ${averageSalary.toFixed(0)}`);
 
-let averageSalary = total / employeesArray.length;
-// Log the average salary without decimals
-console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalary}`);
+  console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $ ${averageSalary.toFixed(2)}`);
 };
 
 
-  // TODO: Calculate and display the average salary
+// TODO: Calculate and display the average salary
 
 
 
