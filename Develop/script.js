@@ -16,21 +16,42 @@ const collectEmployees = function () {
     if (!salary) break;
 
     if (isNaN(salary) || salary <= 0) {
-     alert('Not a valid salary, please enter correct salary!');
+     confirm ('Not a valid salary, please enter correct salary!');
      continue;
       } 
+
       employees.push({firstName: firstName, lastName: lastName, salary: salary})
     }
     return employees
   }
   // TODO: Get user input to create and return an array of employee objects
 
-collectEmployees()
+// collectEmployees()
 
 // Display the average salary
+let employees = []
+
 const displayAverageSalary = function (employeesArray) {
-  // TODO: Calculate and display the average salary
+
+  if (!Array.isArray(employeesArray) || employeesArray.length === 0) {
+    console.log("No salaries provided.");
+    return;
+}
+
+let total = 0;
+for (let i = 0; i < employeesArray.length; i++) {
+    total += employeesArray[i];
+}
+
+let averageSalary = total / employeesArray.length;
+// Log the average salary without decimals
+console.log(`The average employee salary between our ${employees.length} employee(s) is $${averageSalary}`);
 };
+
+
+  // TODO: Calculate and display the average salary
+
+
 
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
