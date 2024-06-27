@@ -52,9 +52,9 @@ const displayAverageSalary = function (employeesArray) {
 
   const averageSalary = totalSalary / numberOfEmployees;
   // Log the average salary without decimals
-  console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $ ${averageSalary.toFixed(0)}`);
+  console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $${averageSalary.toFixed(0)}`);
 
-  console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $ ${averageSalary.toFixed(2)}`);
+  console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $${averageSalary.toFixed(2)}`);
 };
 
 
